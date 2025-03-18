@@ -71,13 +71,6 @@ body {
   margin-top: 50px;
   margin-bottom: 20px;
 }
-li {
-  border-left: 4px solid transparent;
-}
-
-li.completed {
-  text-decoration: line-through;
-}
 
 input {
   padding: 12px;

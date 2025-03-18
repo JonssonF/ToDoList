@@ -1,5 +1,7 @@
 import React from "react";
 import confetti from "canvas-confetti";
+import explosionSoundFile from "../sfx/boom.mp3";
+import gunSoundFile from "../sfx/rifleshot.mp3";
 
 const priorityColors = {
   High: "red",
@@ -7,28 +9,44 @@ const priorityColors = {
   Low: "green",
 };
 
+const explosionSound = new Audio(explosionSoundFile);
+const gunSound = new Audio(gunSoundFile);
+
+console.log(explosionSound, gunSound); // Test ifall ljudet laddas.
+
 function ToDoItem({ todo, todoDone, todoRemove }) {
   const handleComplete = (id) => {
     todoDone(id);
 
     if (!todo.completed) {
       //Bazookan
+      explosionSound.play();
       confetti({
         particleCount: 250,
         spread: 70,
         angle: 135,
         startVelocity: 55,
-        origin: { x: 0.32, y: 0.73 },
+        zIndex: -1,
+        origin: {
+          x: (window.innerWidth * 0.4) / window.innerWidth,
+          y: (window.innerHeight * 0.73) / window.innerHeight,
+        },
         colors: ["#ff0000", "#ff6600"],
       });
       //Pickadollen
       setTimeout(() => {
+        gunSound.play();
         confetti({
           particleCount: 250,
           spread: 5,
           angle: 45,
           startVelocity: 65,
-          origin: { x: 0.62, y: 0.71 },
+          rotate: 90,
+          zIndex: -1,
+          origin: {
+            x: (window.innerWidth * 0.56) / window.innerWidth,
+            y: (window.innerHeight * 0.71) / window.innerHeight,
+          },
           colors: ["#ff0000", "#ff6600"],
         });
       }, 800);
