@@ -34,7 +34,7 @@ function ToDoInput({ addToDo }) {
         <option value="Medium">Medium</option>
         <option value="Low">Low</option>
       </select>
-      <button type="submit">➕</button>
+      <button type="submit">Add</button>
     </form>
   );
 }
