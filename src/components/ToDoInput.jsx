@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function ToDoInput({ addToDo }) {
   const [inputValue, setInputValue] = useState("");
-  const [priority, setPriority] = useState("Medium");
+  const [priority, setPriority] = useState("None");
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -13,7 +13,7 @@ function ToDoInput({ addToDo }) {
     if (inputValue.trim()) {
       addToDo(inputValue, priority);
       setInputValue("");
-      setPriority("Medium");
+      setPriority("None");
     }
   };
 
@@ -27,7 +27,7 @@ function ToDoInput({ addToDo }) {
         required
       />
       <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-        <option value="" disabled selected>
+        <option value="None" disabled>
           Select Priority:
         </option>
         <option value="High">High</option>
