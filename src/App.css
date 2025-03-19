@@ -1,7 +1,16 @@
 body {
   text-align: center;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  background-color: #333;
+  background: linear-gradient(
+      28deg,
+      rgba(0, 0, 0, 0.56) 0%,
+      rgba(0, 0, 0, 0.41) 25%,
+      rgba(0, 0, 0, 0.68) 50%,
+      rgba(0, 0, 0, 1) 75%,
+      rgba(0, 0, 0, 1) 100%
+    )
+    no-repeat center center fixed;
+  background-size: cover;
 }
 
 .todo__item {
@@ -13,6 +22,11 @@ body {
   border-radius: 8px;
   padding: 10px;
   margin-bottom: 10px;
+  transition: background-color 0.8s ease;
+  -webkit-transition: background-color 0.8s ease;
+  -moz-transition: background-color 0.8s ease;
+  -ms-transition: background-color 0.8s ease;
+  -o-transition: background-color 0.8s ease;
 }
 
 .todo__item:hover {
@@ -130,15 +144,51 @@ button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
+.waste__space {
+  position: fixed;
+  bottom: 12%;
+  right: 47%;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
 .worm {
   position: fixed;
 
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 800px; /* eller vad som passar */
-  z-index: -1; /* så den inte ligger över annat innehåll */
-  opacity: 0.8; /* valfritt, gör den lite soft om du vill */
+  width: 800px;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.todo__item.completed {
+  background-color: rgba(0, 128, 0, 0.2);
+  animation: floatOut 2.5s ease forwards;
+  -webkit-animation: floatOut 2.5s ease forwards;
+}
+@keyframes floatOut {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(100%) translateY(30%) rotate(360deg) scale(1.5);
+    -webkit-transform: translateX(100%) translateY(30%) rotate(360deg)
+      scale(1.5);
+    -moz-transform: translateX(100%) translateY(30%) rotate(360deg) scale(1.5);
+    -ms-transform: translateX(100%) translateY(30%) rotate(360deg) scale(1.5);
+    -o-transform: translateX(100%) translateY(30%) rotate(360deg) scale(1.5);
+  }
 }
 
 @media screen and (max-width: 600px) {

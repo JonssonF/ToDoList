@@ -5,12 +5,15 @@ function ToDoInput({ addToDo }) {
   const [priority, setPriority] = useState("None");
 
   const handleChange = (e) => {
+    console.log(".:TEST:. handleChange 1/1");
     setInputValue(e.target.value);
   };
 
   const handleSubmit = (e) => {
+    console.log(".:TEST:. handleSubmit 1/2");
     e.preventDefault();
     if (inputValue.trim()) {
+      console.log(".:TEST:. handleSubmit 2/2");
       addToDo(inputValue, priority);
       setInputValue("");
       setPriority("None");
@@ -30,9 +33,15 @@ function ToDoInput({ addToDo }) {
         <option value="None" disabled>
           Select Priority:
         </option>
-        <option value="High">High</option>
-        <option value="Medium">Medium</option>
-        <option value="Low">Low</option>
+        <option value="High" style={{ color: "red" }}>
+          High
+        </option>
+        <option value="Medium" style={{ color: "orange" }}>
+          Medium
+        </option>
+        <option value="Low" style={{ color: "green" }}>
+          Low
+        </option>
       </select>
       <button type="submit">Add</button>
     </form>

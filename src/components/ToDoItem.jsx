@@ -3,14 +3,14 @@ import confetti from "canvas-confetti";
 import explosionSoundFile from "../sfx/boom.mp3";
 import gunSoundFile from "../sfx/rifleshot.mp3";
 
+const explosionSound = new Audio(explosionSoundFile);
+const gunSound = new Audio(gunSoundFile);
+
 const priorityColors = {
   High: "red",
   Medium: "orange",
   Low: "green",
 };
-
-const explosionSound = new Audio(explosionSoundFile);
-const gunSound = new Audio(gunSoundFile);
 
 console.log(explosionSound, gunSound); // Test ifall ljudet laddas.
 
@@ -49,9 +49,16 @@ function ToDoItem({ todo, todoDone, todoRemove }) {
           },
           colors: ["#ff0000", "#ff6600"],
         });
+        todoRemove(id); /* Function to remove after checked completed.*/
       }, 800);
     }
   };
+
+  const handleDragStart = (e, id) => {
+    console.log(`.:TEST:. handleDragStart 1/1 ID =${id}`);
+    e.dataTransfer.setData("todoId", id);
+  };
+
   return (
     <li
       className={`todo__item ${todo.completed ? "completed" : ""}`}
@@ -60,6 +67,8 @@ function ToDoItem({ todo, todoDone, todoRemove }) {
         borderLeft: `20px solid ${priorityColors[todo.priority]}`,
         paddingLeft: "10px",
       }}
+      draggable
+      onDragStart={(e) => handleDragStart(e, todo.id)}
     >
       <span>{todo.text}</span>
       <div>

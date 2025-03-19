@@ -1,12 +1,11 @@
-import ToDoList from "./components/ToDoList";
+import React from "react";
+import ToDoContainer from "./components/ToDoContainer";
 import "./App.css";
-import wormImage from "./img/worm.png";
 
 function App() {
   return (
     <>
-      <ToDoList />
-      <img src={wormImage} alt="Picture of Worms game" className="worm" />
+      <ToDoContainer />
     </>
   );
 }
