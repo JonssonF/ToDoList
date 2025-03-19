@@ -3,16 +3,14 @@ import confetti from "canvas-confetti";
 import explosionSoundFile from "../sfx/boom.mp3";
 import gunSoundFile from "../sfx/rifleshot.mp3";
 
-const explosionSound = new Audio(explosionSoundFile);
-const gunSound = new Audio(gunSoundFile);
-
 const priorityColors = {
   High: "red",
   Medium: "orange",
   Low: "green",
 };
 
-console.log(explosionSound, gunSound); // Test ifall ljudet laddas.
+const explosionSound = new Audio(explosionSoundFile);
+const gunSound = new Audio(gunSoundFile);
 
 function ToDoItem({ todo, todoDone, todoRemove }) {
   const handleComplete = (id) => {
@@ -20,6 +18,7 @@ function ToDoItem({ todo, todoDone, todoRemove }) {
 
     if (!todo.completed) {
       //Bazookan
+      console.log("BOOM!");
       explosionSound.play();
       confetti({
         particleCount: 250,
@@ -35,6 +34,7 @@ function ToDoItem({ todo, todoDone, todoRemove }) {
       });
       //Pickadollen
       setTimeout(() => {
+        console.log("PANG!");
         gunSound.play();
         confetti({
           particleCount: 250,
