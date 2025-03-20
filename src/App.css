@@ -11,6 +11,7 @@ body {
     )
     no-repeat center center fixed;
   background-size: cover;
+  overflow-x: hidden;
 }
 
 .todo__item {
@@ -173,6 +174,7 @@ button[type="submit"]:hover {
   animation: floatOut 2.5s ease forwards;
   -webkit-animation: floatOut 2.5s ease forwards;
 }
+
 @keyframes floatOut {
   0% {
     transform: translateX(0) translateY(0);
@@ -188,6 +190,24 @@ button[type="submit"]:hover {
     -moz-transform: translateX(100%) translateY(30%) rotate(360deg) scale(1.5);
     -ms-transform: translateX(100%) translateY(30%) rotate(360deg) scale(1.5);
     -o-transform: translateX(100%) translateY(30%) rotate(360deg) scale(1.5);
+  }
+}
+
+.buttom__remove:: {
+  background-color: red;
+  animaton: Dropdown 2.5s ease forwards;
+}
+
+@keyframes Dropdown {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    -webkit-filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
   }
 }
 
