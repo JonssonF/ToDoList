@@ -193,13 +193,14 @@ button[type="submit"]:hover {
   }
 }
 
-.buttom__remove:: {
+.buttom__remove:active {
   background-color: red;
-  animaton: Dropdown 2.5s ease forwards;
+  animation: Dropdown 2.5s ease forwards;
 }
 
 @keyframes Dropdown {
   0% {
+    transform: translateY(0);
     opacity: 1;
     filter: blur(0);
     -webkit-filter: blur(0);
@@ -208,6 +209,11 @@ button[type="submit"]:hover {
     opacity: 0;
     filter: blur(5px);
     -webkit-filter: blur(5px);
+    transform: translateY(1000px);
+    -webkit-transform: translateY(1000px);
+    -moz-transform: translateY(1000px);
+    -ms-transform: translateY(1000px);
+    -o-transform: translateY(1000px);
   }
 }
 
